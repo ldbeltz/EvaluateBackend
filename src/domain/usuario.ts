@@ -1,4 +1,5 @@
-class Usuario {
+import { Status } from './Status';
+export class Usuario {
   _email: String;
   _senha: String;
   _nome: String;

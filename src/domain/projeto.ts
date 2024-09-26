@@ -1,3 +1,4 @@
+import { Status } from './Status';
 class Projeto {
   _nome: string;
   _descricao: string;
