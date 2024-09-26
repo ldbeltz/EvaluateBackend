@@ -1,4 +1,6 @@
-class Professor extends Usuario {
+import { Status } from "./Status";
+import { Usuario } from "./usuario";
+export class Professor extends Usuario {
   _matricula: number;
 
   constructor(

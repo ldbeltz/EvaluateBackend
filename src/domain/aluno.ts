@@ -2,7 +2,7 @@
 import { Status } from './Status';
 import { Usuario } from './usuario';
 
-class Aluno extends Usuario {
+export class Aluno extends Usuario {
   private _matricula: number;
   private avaliacoes: { codProjeto: number; nota: number }[] = [];
 
