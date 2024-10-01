@@ -1,4 +1,6 @@
-export async function getUser(req: any, res: any) {
+import {Request, Response} from "express"
+
+export async function getUser(req: Request, res: Response) {
   try {
     res.status(200).send({
       mensagem: "User Details",
