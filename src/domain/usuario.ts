@@ -1,22 +1,34 @@
 import { Status } from './Status';
 
 export class Usuario {
-  _email: String;
-  _senha: String;
-  _nome: String;
-  _status: Status;
+  private id: number;
+  private email: string;
+  private senha: string;
+  private nome: string;
+  private status: Status = Status.ativo;
 
-  constructor(email: String, senha: String, nome: String, status: Status) {
-    this._email = email;
-    this._senha = senha;
-    this._nome = nome;
-    this._status = status;
+  constructor(email: string, senha: string, nome: string) {
+    this.email = email;
+    this.senha = senha;
+    this.nome = nome;
   }
 
-  get email(): String {
-    return this._email;
+  getId(): number{
+    return this.id;
   }
-  get senha(): String{
-    return this._senha;
+
+  setId(id: number): void{
+    this.id = id;
+  }
+
+  getEmail(): string {
+    return this.email;
+  }
+  getSenha(): string{
+    return this.senha;
+  }
+
+  inativarUsuario(): void{
+    this.status = Status.inativo;
   }
 }

@@ -1,14 +1,25 @@
 import { Usuario } from "../domain/usuario";
-import { Status } from "../domain/Status";
-const usuarios = [
-                    new Usuario("foo@email.com", "pass123", "foo", Status.ativo), 
-                    new Usuario("foo2@email.com", "pass123", "foo", Status.ativo)
-                ];
+//import { Status } from "../domain/Status";
+import { inMemoryUsuarioRepository } from "./interfaces/inMemoryUsuarioRepository"
 
-export async function login(email: String, senha: String) {
-    const foundUser =  usuarios.find((u) => u.email === email && u.senha === senha);
+export class UsuarioService{
+
+    private usuarioRepository : inMemoryUsuarioRepository;
+
+    constructor() {
+        this.usuarioRepository = new inMemoryUsuarioRepository();
+      }
+
+    login(email: string, senha: string) {
+        const foundUser =  this.usuarioRepository.findByCredentials(email, senha);
     
-    if (!foundUser) throw new Error("Usuario não encotrado.");
+        if (!foundUser) throw new Error("Credenciais incorretas.");
+    
+        return foundUser;
+    }
 
-    return foundUser;
+    createUser(usuario:Usuario) {
+        this.usuarioRepository.create(usuario);
+        return usuario;
+    }
 }
