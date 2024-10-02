@@ -8,7 +8,7 @@ const usuarios = [
 export async function login(email: String, senha: String) {
     const foundUser =  usuarios.find((u) => u.email === email && u.senha === senha);
     
-    if (!foundUser) throw new Error("Usuario n„o encotrado.");
+    if (!foundUser) throw new Error("Usuario n√£o encotrado.");
 
     return foundUser;
 }

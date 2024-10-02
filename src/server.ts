@@ -7,6 +7,7 @@ async function start() {
     const app = express();
     const port = 3000;
     //Routes
+    app.use(express.json())
     app.use("/api/login", userRoutes);
     app.use("/api/admin", adminRoutes);
     
