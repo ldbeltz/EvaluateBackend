@@ -1,16 +1,16 @@
 import { Usuario } from "../domain/usuario";
 //import { Status } from "../domain/Status";
-import { inMemoryUsuarioRepository } from "./interfaces/inMemoryUsuarioRepository"
+import { InMemoryUsuarioRepository } from "./interfaces/InMemoryUsuarioRepository"
 
 export class UsuarioService{
 
-    private usuarioRepository : inMemoryUsuarioRepository;
+    private usuarioRepository : InMemoryUsuarioRepository;
 
-    constructor() {
-        this.usuarioRepository = new inMemoryUsuarioRepository();
+    constructor(usuarioRepository: InMemoryUsuarioRepository) {
+        this.usuarioRepository = usuarioRepository;
       }
 
-    login(email: string, senha: string) {
+    async login(email: string, senha: string) {
         const foundUser =  this.usuarioRepository.findByCredentials(email, senha);
     
         if (!foundUser) throw new Error("Credenciais incorretas.");
@@ -18,8 +18,7 @@ export class UsuarioService{
         return foundUser;
     }
 
-    createUser(usuario:Usuario) {
-        this.usuarioRepository.create(usuario);
-        return usuario;
+    async createUser(usuario:Usuario) {
+        return await this.usuarioRepository.create(usuario);
     }
 }

@@ -1,7 +1,7 @@
 import { Usuario } from "../../domain/usuario";
 import { IUsuarioRepository } from "./IUsuarioRepository";
 
-export class inMemoryUsuarioRepository implements IUsuarioRepository<Usuario>{
+export class InMemoryUsuarioRepository implements IUsuarioRepository<Usuario>{
     
     private usuarios: Usuario[] = [];
     private sequence: number = 1;

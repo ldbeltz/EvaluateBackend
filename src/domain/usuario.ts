@@ -27,6 +27,10 @@ export class Usuario {
   getSenha(): string{
     return this.senha;
   }
+  
+  setSenha(senha: string): void{
+    this.senha = senha;
+  }
 
   inativarUsuario(): void{
     this.status = Status.inativo;

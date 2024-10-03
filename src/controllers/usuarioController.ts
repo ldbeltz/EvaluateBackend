@@ -4,14 +4,14 @@ import { Usuario } from "../domain/usuario";
 
 export class UsuarioController{
 
-    private readonly usuarioService: UsuarioService;
+    private usuarioService: UsuarioService;
     
-    constructor(){
-        this.usuarioService = new UsuarioService();
+    constructor(usuarioService: UsuarioService){
+        this.usuarioService = usuarioService;
         console.log(this.usuarioService);
     } 
     
-    async login (req: Request, res: Response): Promise<void> {
+    login = async (req: Request, res: Response): Promise<void> => {
         try {
             
             const foundUser = await this.usuarioService.login(req.body.email, req.body.senha);
@@ -26,7 +26,7 @@ export class UsuarioController{
         }
     }
 
-    async createUser(req: Request, res: Response): Promise<void> {
+    register = async (req: Request, res: Response): Promise<void> => {
         try {
             const usuarioCriado = await this.usuarioService.createUser(new Usuario(req.body.email, req.body.senha, req.body.nome));
             return res.status(201).json(usuarioCriado);
