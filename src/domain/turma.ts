@@ -1,12 +1,15 @@
-class Turma {
-  _codigo: string;
-  _periodo: string;
-  _descricao: string;
-  _projetos: Projeto[];
-  _alunos: Aluno[];
+import { Aluno } from "./aluno";
+import { Projeto } from "./projeto";
+
+export class Turma {
+  private codigo: string;
+  private periodo: string;
+  private descricao: string;
+  private projetos: Projeto[];
+  private alunos: Aluno[];
 
   cadastrarAluno(aluno: Aluno) {
-    //todo
+    this.alunos.push(aluno);
   }
   removerAluno(aluno: Aluno) {
     //todo

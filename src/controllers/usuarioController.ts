@@ -8,7 +8,6 @@ export class UsuarioController{
     
     constructor(usuarioService: UsuarioService){
         this.usuarioService = usuarioService;
-        console.log(this.usuarioService);
     } 
     
     login = async (req: Request, res: Response): Promise<void> => {

@@ -1,8 +1,10 @@
-class Disciplina {
-  _nome: string;
-  _codigo: string;
-  _cargaHoraria: number;
-  _turmas: Turma[];
+import { Turma } from "./turma";
+
+export class Disciplina {
+  private nome: string;
+  private codigo: string;
+  private cargaHoraria: number;
+  private turmas: Turma[];
 
   addTurma(turma: Turma) {
     //todo

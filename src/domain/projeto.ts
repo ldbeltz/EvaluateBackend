@@ -1,12 +1,16 @@
-class Projeto {
-  _nome: string;
-  _descricao: string;
-  _grupo: Grupo;
-  _nota: number;
-  _status: Status;
+import { Avaliacao } from "./avaliacao";
+import { Grupo } from "./grupo";
+import { Status } from "./Status";
+
+export class Projeto {
+  private nome: string;
+  private descricao: string;
+  private grupo: Grupo;
+  private nota: number;S
+  private status: Status;
 
   associarGrupo(grupo: Grupo) {
-    this._grupo = grupo;
+    this.grupo = grupo;
   }
 
   calcularNota(avaliacoes: Avaliacao[]) {

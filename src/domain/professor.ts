@@ -1,15 +1,16 @@
-class Professor extends Usuario {
-  _matricula: number;
+import { Usuario } from "./usuario";
+
+export class Professor extends Usuario {
+  private matricula: number;
 
   constructor(
     email: string,
     senha: string,
     nome: string,
-    status: Status,
     matricula: number
   ) {
-    super(email, senha, nome, status);
-    this._matricula = matricula;
+    super(email, senha, nome);
+    this.matricula = matricula;
   }
 
   cadastrarDisciplina(codDisciplina: number) {

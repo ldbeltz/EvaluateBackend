@@ -1,17 +1,19 @@
-class Grupo {
-  _alunos: Aluno[];
+import { Aluno } from "./aluno";
+
+export class Grupo {
+  private alunos: Aluno[];
 
   incluirAluno(aluno: Aluno) {
-    this._alunos.push(aluno);
+    this.alunos.push(aluno);
   }
 
   removerAluno(aluno: Aluno): Aluno[] {
-    const index: number = this._alunos.indexOf(aluno);
+    const index: number = this.alunos.indexOf(aluno);
 
     if (index > -1) {
-      this._alunos.splice(index, 1);
+      this.alunos.splice(index, 1);
     }
 
-    return this._alunos;
+    return this.alunos;
   }
 }
