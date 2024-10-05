@@ -5,12 +5,12 @@
     "target": "es6",
     "moduleResolution": "node",
     "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "sourceMap": false,
-
     "outDir": "./dist",
     "rootDir": "./src",
     "resolveJsonModule": true,
-
     "skipLibCheck": true,
     "allowJs": true,
     // "checkJs": true,

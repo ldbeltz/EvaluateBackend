@@ -1,0 +1,17 @@
+import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { AlunoEntity } from './alunoEntity';
+import { TurmaEntity } from './turmaEntity';
+
+@Entity()
+export class AlunoTurma {
+    @PrimaryGeneratedColumn()
+    id: number;
+
+    @ManyToOne(() => AlunoEntity)
+    @JoinColumn({ name: "id_aluno" })
+    aluno: AlunoEntity;
+
+    @ManyToOne(() => TurmaEntity)
+    @JoinColumn({ name: "id_turma" })
+    turma: TurmaEntity;
+}
