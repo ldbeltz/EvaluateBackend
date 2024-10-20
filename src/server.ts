@@ -1,5 +1,6 @@
 import express from "express";
 //import adminRoutes from "./routes/adminRoutes";
+import "reflect-metadata"
 import userRoutes from  "./routes/usuarioRoutes";
 import loginRoutes from "./routes/loginRoutes"; 
 

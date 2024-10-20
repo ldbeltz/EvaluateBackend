@@ -21,6 +21,10 @@ export class Usuario {
     this.id = id;
   }
 
+  getNome():string{
+    return this.nome;
+  }
+
   getEmail(): string {
     return this.email;
   }

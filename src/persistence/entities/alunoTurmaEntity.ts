@@ -3,7 +3,7 @@ import { AlunoEntity } from './alunoEntity';
 import { TurmaEntity } from './turmaEntity';
 
 @Entity()
-export class AlunoTurma {
+export class AlunoTurmaEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
