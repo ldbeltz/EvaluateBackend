@@ -16,20 +16,6 @@ export class UsuarioEntity {
     @Column({ length: 255 })
     senha_hash: string;
 
-    @Column('tinyint')
+    @Column()
     status_online: number;
-
-    static fromAluno(aluno: Aluno): UsuarioEntity{
-        const usuarioEntity = new UsuarioEntity();
-        usuarioEntity.nome = aluno.getNome();
-        usuarioEntity.email = aluno.getEmail();
-        usuarioEntity.id_user = aluno.getId();
-        return usuarioEntity;
-    }
-
-    asUsuario(){
-        const usuario = new Usuario(this.email, this.senha_hash, this.nome);
-        usuario.setId(this.id_user);
-        return usuario;
-    }
 }

@@ -7,7 +7,7 @@ import { Usuario } from '../../domain/usuario';
 export class AlunoRepository {
   private alunoPgRepository: Repository<AlunoEntity>
   private usuarioPgRepository: Repository<UsuarioEntity>
-  constructor(private dataSource: DataSource) {
+  constructor(dataSource: DataSource) {
         this.alunoPgRepository = dataSource.getRepository(AlunoEntity);
         this.usuarioPgRepository = dataSource.getRepository(UsuarioEntity);
     }
@@ -28,7 +28,7 @@ export class AlunoRepository {
       //console.log(savedUsuario);
 
       const alunoEntity = new AlunoEntity();
-      alunoEntity.id = aluno.getId();
+      alunoEntity.id = usuarioEntity.id_user;
       alunoEntity.matricula = aluno.getMatricula();
       alunoEntity.curso = aluno.getCurso(); 
       alunoEntity.usuario = usuarioEntity;
@@ -36,10 +36,8 @@ export class AlunoRepository {
 
       await this.alunoPgRepository.save(alunoEntity);
       
-      //const savedAluno = this.alunoPgRepository.findOne();
-
-      //return savedAluno.asAluno();
-     return null;
+     return alunoEntity.asAluno();
+     
     }
       
     findByMatricula(matricula: number) { 
