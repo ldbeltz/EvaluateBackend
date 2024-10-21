@@ -1,5 +1,5 @@
 import express from "express";
-//import adminRoutes from "./routes/adminRoutes";
+import adminRoutes from "./routes/adminRoutes";
 import "reflect-metadata";
 import userRoutes from  "./routes/usuarioRoutes";
 import loginRoutes from "./routes/loginRoutes"; 
@@ -14,7 +14,7 @@ async function start() {
     //Routes
     app.use(express.json());
     app.use("/api/login", loginRoutes);
-    //app.use("/api/admin", adminRoutes);
+    app.use("/api/admin", adminRoutes);
     app.use("/api/usuarios", userRoutes);
 
     //Start server

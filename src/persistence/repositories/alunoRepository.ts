@@ -28,7 +28,7 @@ export class AlunoRepository {
 
       const alunoEntity = new AlunoEntity();
       alunoEntity.id = usuarioEntity.id_user;
-      alunoEntity.matricula = aluno.getMatricula();
+      //alunoEntity.matricula = aluno.getMatricula();
       alunoEntity.curso = aluno.getCurso(); 
       alunoEntity.usuario = usuarioEntity;
 

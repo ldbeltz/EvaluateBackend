@@ -1,7 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
 import { UsuarioEntity } from './usuarioEntity';
 import { Aluno } from '../../domain/aluno';
-import { Usuario } from '../../domain/usuario';
 
 @Entity("aluno")
 export class AlunoEntity {
