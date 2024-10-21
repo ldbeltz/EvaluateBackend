@@ -18,8 +18,7 @@ export class AlunoRepository {
       usuarioEntity.nome =  usuario.getNome();
       usuarioEntity.email = usuario.getEmail();
       usuarioEntity.senha_hash = usuario.getSenha();
-      usuarioEntity.status_online = 1;
-//      usuarioEntity.status_online = aluno.getStatus().valueOf();
+      usuarioEntity.status_online = usuario.getStatus().valueOf();
 
       //console.log(usuarioEntity);
 
@@ -36,11 +35,11 @@ export class AlunoRepository {
 
       await this.alunoPgRepository.save(alunoEntity);
       
-     return alunoEntity.asAluno();
-     
+      return alunoEntity.asAluno();
+
     }
       
     findByMatricula(matricula: number) { 
-    return this.alunoPgRepository.findOne({ where: { matricula: matricula } });
+      return this.alunoPgRepository.findOne({ where: { matricula: matricula } });
     }
 }

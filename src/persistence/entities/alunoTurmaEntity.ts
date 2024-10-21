@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { AlunoEntity } from './alunoEntity';
 import { TurmaEntity } from './turmaEntity';
 
-@Entity()
+@Entity("aluno_turma")
 export class AlunoTurmaEntity {
     @PrimaryGeneratedColumn()
     id: number;

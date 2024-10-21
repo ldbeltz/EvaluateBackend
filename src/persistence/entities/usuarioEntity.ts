@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'ty
 import { Aluno } from '../../domain/aluno';
 import { Usuario } from '../../domain/usuario';
 
-@Entity()
+@Entity("usuario")
 export class UsuarioEntity {
     @PrimaryGeneratedColumn()
     id_user: number;

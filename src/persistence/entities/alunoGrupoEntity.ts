@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { AlunoEntity } from './alunoEntity';
 import { GrupoEntity } from './grupoEntity';
 
-@Entity()
+@Entity("aluno_grupo")
 export class AlunoGrupoEntity {
     @PrimaryGeneratedColumn()
     id: number;

@@ -32,6 +32,10 @@ export class Usuario {
     return this.senha;
   }
   
+  getStatus(): Status{
+    return this.status;
+  }
+
   setSenha(senha: string): void{
     this.senha = senha;
   }

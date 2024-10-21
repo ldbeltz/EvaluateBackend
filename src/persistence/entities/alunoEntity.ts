@@ -1,8 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
 import { UsuarioEntity } from './usuarioEntity';
 import { Aluno } from '../../domain/aluno';
+import { Usuario } from '../../domain/usuario';
 
-@Entity()
+@Entity("aluno")
 export class AlunoEntity {
     @Column()
     id: number;
@@ -18,6 +19,10 @@ export class AlunoEntity {
     usuario: UsuarioEntity;
 
     asAluno(){
-        return new Aluno(this.usuario.email, this.usuario.nome, this.usuario.senha_hash, this.curso, this.matricula);
+        const aluno :Aluno = new Aluno(this.usuario.email, this.usuario.nome, this.usuario.senha_hash, this.curso, this.matricula);
+        if (this.usuario.status_online === 0){
+            aluno.inativarUsuario();
+        }
+        return aluno;
     }
 }
