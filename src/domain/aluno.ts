@@ -1,4 +1,3 @@
-import { Status } from "./Status";
 import { Usuario } from "./usuario";
 
 export class Aluno extends Usuario {

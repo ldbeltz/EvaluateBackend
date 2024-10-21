@@ -1,6 +1,6 @@
 import express from "express";
 
-import { AdminController, getUser } from "../controllers/adminController";
+import { AdminController} from "../controllers/adminController";
 import { appDataSource } from "../data-source";
 import { ProfessorRepository } from "../persistence/repositories/professorRepository";
 import { repository } from "../repository";
@@ -13,7 +13,7 @@ const professorService = new ProfessorService(new ProfessorRepository(appDataSou
 const adminController = new AdminController(usuarioService, professorService)
 
 
-router.get("/", getUser);
+//router.get("/", getUser);
 router.post("/professores", adminController.register)
 
 export default router;

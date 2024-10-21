@@ -20,23 +20,18 @@ export class AlunoRepository {
       usuarioEntity.senha_hash = usuario.getSenha();
       usuarioEntity.status_online = usuario.getStatus().valueOf();
 
-      //console.log(usuarioEntity);
-
+      //Salva primeiro o usuário
       await this.usuarioPgRepository.save(usuarioEntity);
       
-      //console.log(savedUsuario);
-
       const alunoEntity = new AlunoEntity();
-      alunoEntity.id = usuarioEntity.id_user;
-      //alunoEntity.matricula = aluno.getMatricula();
+      alunoEntity.id = usuarioEntity.id;
       alunoEntity.curso = aluno.getCurso(); 
       alunoEntity.usuario = usuarioEntity;
 
-
+      //Dps salva o aluno
       await this.alunoPgRepository.save(alunoEntity);
       
       return alunoEntity.asAluno();
-
     }
       
     findByMatricula(matricula: number) { 

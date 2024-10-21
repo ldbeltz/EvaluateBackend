@@ -5,7 +5,7 @@ import { Usuario } from '../../domain/usuario';
 @Entity("usuario")
 export class UsuarioEntity {
     @PrimaryGeneratedColumn()
-    id_user: number;
+    id: number;
 
     @Column({ length: 45 })
     nome: string;

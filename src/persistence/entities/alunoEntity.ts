@@ -14,7 +14,7 @@ export class AlunoEntity {
     curso: string;
 
     @OneToOne(() => UsuarioEntity)
-    @JoinColumn({ name: "id_user" })
+    @JoinColumn({ name: "id" })
     usuario: UsuarioEntity;
 
     asAluno(){

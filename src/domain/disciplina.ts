@@ -1,20 +1,25 @@
 import { Turma } from "./turma";
 
 export class Disciplina {
+  private codigo: number;
   private nome: string;
-  private codigo: string;
   private cargaHoraria: number;
-  private turmas: Turma[];
 
-  addTurma(turma: Turma) {
-    //todo
+  constructor(codigo: number, nome: string, cargaHoraria: number){
+    this.codigo = codigo;
+    this.nome = nome;
+    this.cargaHoraria = cargaHoraria;
   }
-  listarTurmas(): Turma[] {
-    //todo
-    return null;
+
+  getNome(): string{
+    return this.nome;
   }
-  consultarTurma(codigo: number): Turma {
-    //todo
-    return null;
+
+  getCodigo(): number{ 
+    return this.codigo;
+  }
+
+  getCargaHoraria(): number{
+    return this.cargaHoraria;
   }
 }

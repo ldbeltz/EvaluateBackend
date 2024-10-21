@@ -6,7 +6,7 @@ export class Projeto {
   private nome: string;
   private descricao: string;
   private grupo: Grupo;
-  private nota: number;S
+  private nota: number;
   private status: Status;
 
   associarGrupo(grupo: Grupo) {

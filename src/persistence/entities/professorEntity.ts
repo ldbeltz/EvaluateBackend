@@ -11,7 +11,7 @@ export class ProfessorEntity {
     matricula: number;
 
     @OneToOne(() => UsuarioEntity)
-    @JoinColumn({ name: "id_user" })
+    @JoinColumn({ name: "id" })
     usuario: UsuarioEntity;
 
     asProfessor(): Professor{
@@ -19,6 +19,6 @@ export class ProfessorEntity {
         if (this.usuario.status_online === 0){
             professor.inativarUsuario();
         }
-        return professor;
+        return professor; 
     }
 }
