@@ -56,13 +56,13 @@ export class ProfessorRepository {
 
     async createTurma(turma: Turma): Promise<Turma>{
 
-      const  disciplina: DisciplinaEntity = await this.disciplinaPgRepository.findOne({where : {codigo : turma.getDisciplina().getCodigo()}})
+      const  disciplina: DisciplinaEntity = await this.disciplinaPgRepository.findOne({where : {codigo : turma.getCodDisciplina()}})
       if (!disciplina){
         return null;
       }
 
 
-      const professor: ProfessorEntity = await this.professorPgRepository.findOne({where : {id : turma.getProfessor().getId()}})
+      const professor: ProfessorEntity = await this.professorPgRepository.findOne({where : {id : turma.getMatriculaProfessor()}})
       if(!professor){
         return null;
       }

@@ -23,6 +23,6 @@ export class TurmaEntity {
     professor: ProfessorEntity;
 
     asTurma(): Turma{
-        return new Turma(this.cod_turma, this.periodo, this.descricao, this.disciplina.asDisciplina(), this.professor.asProfessor());
+        return new Turma(this.cod_turma, this.periodo, this.descricao, this.disciplina.codigo, this.professor.matricula);
     }
 }

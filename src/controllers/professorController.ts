@@ -1,6 +1,7 @@
 import {Request, Response} from "express";
 import { Turma } from "../domain/turma";
 import { ProfessorService } from "../services/professorService";
+import { Disciplina } from "../domain/disciplina";
 
 export class ProfessorController{
     private professorService: ProfessorService;
@@ -28,7 +29,7 @@ export class ProfessorController{
     cadastraTurma = async (req: Request, res: Response): Promise<Turma> => {
         try {
             //login token
-            const turma = new Turma(null, req.body.periodo, req.body.descricao);
+            const turma = new Turma(null, req.body.periodo, req.body.descricao, req.body.codDisciplina, req.body.codProfessor);
             const savedTurma = await this.professorService.cadastraTurma(turma);
             res.status(201).send(savedTurma); 
         }

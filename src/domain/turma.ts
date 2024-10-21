@@ -7,17 +7,17 @@ export class Turma {
   private codigo: number;
   private periodo: string;
   private descricao: string;
-  private disciplina: Disciplina;
-  private professor: Professor;
+  private codDisciplina: number;
+  private matriculaProfessor: number;
   private projetos: Projeto[];
   private alunos: Aluno[];
 
-  constructor(codigo: number, periodo: string, descricao: string, disciplina: Disciplina, professor: Professor){
+  constructor(codigo: number, periodo: string, descricao: string, codDisciplina: number, codProfessor: number){
     this.codigo = codigo;
     this.periodo = periodo;
     this.descricao = descricao;
-    this.disciplina = disciplina;
-    this.professor = professor;
+    this.codDisciplina = codDisciplina;
+    this.matriculaProfessor = codProfessor;
   }
 
   getDescricao(): string{
@@ -32,11 +32,11 @@ export class Turma {
   getCodigo(): number{
     return this.codigo;
   }
-  getDisciplina(): Disciplina{
-    return this.disciplina;
+  getCodDisciplina(): number{
+    return this.codDisciplina;
   }
-  getProfessor(): Professor{
-    return this.professor;
+  getMatriculaProfessor(): number{
+    return this.matriculaProfessor;
   }
 
   cadastrarAluno(aluno: Aluno) {
