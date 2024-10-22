@@ -14,7 +14,9 @@ export class ProfessorService{
     async saveProfessor(professor: Professor): Promise<Professor> {
         return await this.professorRepository.create(professor);
       }
-    
+    async getAllTurmas(): Promise<Turma[]>{
+        return await this.professorRepository.findAllTurmas();
+    }
     async getTurmaByCodigo(codTurma: number): Promise<Turma> {
         return await this.professorRepository.findTurmaByCodigo(codTurma);
     }

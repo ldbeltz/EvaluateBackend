@@ -4,6 +4,7 @@ import adminRoutes from "./routes/adminRoutes";
 import "reflect-metadata";
 import userRoutes from  "./routes/usuarioRoutes";
 import loginRoutes from "./routes/loginRoutes"; 
+import professorRoutes from "./routes/professorRoutes"
 import { appDataSource } from "./data-source";
 
 
@@ -18,6 +19,7 @@ async function start() {
     app.use("/api/login", loginRoutes);
     app.use("/api/admin", adminRoutes);
     app.use("/api/usuarios", userRoutes);
+    app.use("/api/professores", professorRoutes);
 
     //Start server
     app.listen(PORT, () => {

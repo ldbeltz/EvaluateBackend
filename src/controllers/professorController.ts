@@ -11,12 +11,26 @@ export class ProfessorController{
         this.professorService = professorService;
     }
 
-
     getTurma = async (req: Request, res: Response): Promise<Turma> => {
         try {
             //login token
             const foundTurma = await this.professorService.getTurmaByCodigo(req.params.codTurma);
             res.status(200).send(foundTurma); 
+        }
+        catch(error){
+            if (error instanceof Error){
+                return res.status(404).send(error.message);
+            } else{
+                throw new Error(error);
+            }   
+        }
+    };
+
+    getTurmas = async (req: Request, res: Response): Promise<Turma[]> => {
+        try {
+            //login token
+            const foundTurmas = await this.professorService.getAllTurmas();
+            res.status(200).send(foundTurmas); 
         }
         catch(error){
             if (error instanceof Error){

@@ -53,6 +53,18 @@ export class ProfessorRepository {
       return foundProfessor.asProfessor();
     }
 
+    async findAllTurmas():Promise<Turma[]>{
+      const turmas: TurmaEntity[] = await this.turmaPgRepository.find({
+        relations:{
+          professor: true,
+          disciplina: true
+        }
+      });
+      return turmas.map(turma => {
+          return new Turma(turma.cod_turma, turma.periodo, turma.descricao, turma.disciplina.codigo, turma.professor.id);
+      })
+    }
+
     async findTurmaByCodigo(codTurma: number): Promise<Turma>{
       const foundTurma: TurmaEntity = await this.turmaPgRepository.findOne({
         where: {cod_turma: codTurma}
@@ -84,6 +96,8 @@ export class ProfessorRepository {
       return turmaEntity.asTurma();
 
     }
+
+    
 
     async createProjeto(projeto: Projeto): Promise<Projeto>{
 
