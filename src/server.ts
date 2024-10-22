@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors"
 import adminRoutes from "./routes/adminRoutes";
 import "reflect-metadata";
 import userRoutes from  "./routes/usuarioRoutes";
@@ -12,6 +13,7 @@ async function start() {
     const app = express();
     const PORT = 3000;
     //Routes
+    app.use(cors());
     app.use(express.json());
     app.use("/api/login", loginRoutes);
     app.use("/api/admin", adminRoutes);
