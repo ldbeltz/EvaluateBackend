@@ -1,4 +1,5 @@
 import { Professor } from "../domain/professor";
+import { Projeto } from "../domain/projeto";
 import { Turma } from "../domain/turma";
 import { ProfessorRepository } from "../persistence/repositories/professorRepository";
 
@@ -19,6 +20,10 @@ export class ProfessorService{
 
     async cadastraTurma(turma: Turma): Promise<Turma>{
         return await this.professorRepository.createTurma(turma);
+    }
+
+    async cadastrarProjeto(projeto: Projeto): Promise<Projeto>{
+        return await this.professorRepository.createProjeto(projeto);
     }
       
 }

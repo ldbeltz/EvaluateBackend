@@ -6,13 +6,18 @@ import { UsuarioEntity } from '../entities/usuarioEntity';
 import { TurmaEntity } from '../entities/turmaEntity';
 import { Turma } from '../../domain/turma';
 import { DisciplinaEntity } from '../entities/disciplinaEntity';
+import { Projeto } from '../../domain/projeto';
+import { ProjetoEntity } from '../entities/projetoEntity';
+import { GrupoEntity } from '../entities/grupoEntity';
 
 export class ProfessorRepository {
     private professorPgRepository: Repository<ProfessorEntity>;
     private usuarioPgRepository: Repository<UsuarioEntity>;
     private turmaPgRepository: Repository<TurmaEntity>;
     private disciplinaPgRepository: Repository<DisciplinaEntity>;
-    
+    private projetoRepository: Repository<ProjetoEntity>;
+    private grupoRepository: Repository<GrupoEntity>;
+
     constructor(dataSource: DataSource) {
           this.professorPgRepository = dataSource.getRepository(ProfessorEntity);
           this.usuarioPgRepository = dataSource.getRepository(UsuarioEntity);
@@ -77,5 +82,30 @@ export class ProfessorRepository {
 
       return turmaEntity.asTurma();
 
+    }
+
+    async createProjeto(projeto: Projeto): Promise<Projeto>{
+
+      const  grupo: GrupoEntity = await this.grupoRepository.findOne({where : {id : projeto.getCodGrupo()}})
+      if (!grupo){
+        return null;
+      }
+
+
+      const turma: TurmaEntity = await this.turmaPgRepository.findOne({where : {cod_turma : projeto.getCodTurma()}})
+      if(!turma){
+        return null;
+      }
+    
+      const projetoEntity = new ProjetoEntity();
+      projetoEntity.titulo = projeto.getTitulo();
+      projetoEntity.descricao = projeto.getDescricao();
+      projetoEntity.nota = projeto.getNota();
+      projetoEntity.turma = turma;
+      projetoEntity.grupo = grupo;
+
+      await this.turmaPgRepository.save(projetoEntity);
+
+      return projetoEntity.asProjeto();
     }
   }

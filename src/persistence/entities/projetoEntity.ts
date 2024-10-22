@@ -1,5 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { TurmaEntity } from './turmaEntity';
+import { GrupoEntity } from './grupoEntity';
+import { Projeto } from '../../domain/projeto';
+import { Status } from '../../domain/Status';
 
 @Entity("projeto")
 export class ProjetoEntity {
@@ -15,7 +18,19 @@ export class ProjetoEntity {
     @Column('float')
     nota: number;
 
+    @Column()
+    status: number;
+
+    @ManyToOne(() => GrupoEntity)
+    @JoinColumn({ name: "id" })
+    grupo: GrupoEntity;
+
     @ManyToOne(() => TurmaEntity)
     @JoinColumn({ name: "id_turma" })
     turma: TurmaEntity;
+
+
+    asProjeto(): Projeto{
+        return new Projeto(this.titulo, this.descricao, this.grupo.id, this.turma.cod_turma, this.status);
+    }
 }
