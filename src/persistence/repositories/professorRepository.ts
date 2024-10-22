@@ -9,6 +9,7 @@ import { DisciplinaEntity } from '../entities/disciplinaEntity';
 import { Projeto } from '../../domain/projeto';
 import { ProjetoEntity } from '../entities/projetoEntity';
 import { GrupoEntity } from '../entities/grupoEntity';
+import { Disciplina } from '../../domain/disciplina';
 
 export class ProfessorRepository {
     private professorPgRepository: Repository<ProfessorEntity>;
@@ -107,5 +108,19 @@ export class ProfessorRepository {
       await this.turmaPgRepository.save(projetoEntity);
 
       return projetoEntity.asProjeto();
+    }
+
+
+    async createDisciplina(disciplina: Disciplina): Promise<Disciplina>{
+
+    
+      const disciplinaEntity = new DisciplinaEntity();
+      disciplinaEntity.nome = disciplina.getNome();
+      disciplinaEntity.cargaHoraria = disciplina.getCargaHoraria();
+      disciplinaEntity.sigla = disciplina.getSigla();
+
+      await this.disciplinaPgRepository.save(disciplinaEntity);
+
+      return disciplinaEntity.asDisciplina();
     }
   }

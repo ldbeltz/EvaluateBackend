@@ -43,6 +43,22 @@ export class ProfessorController{
         }
     };
 
+    cadastraDisciplina = async (req: Request, res: Response): Promise<Disciplina> => {
+        try {
+            //login token
+            const disciplina = new Disciplina(null, req.body.nome, req.body.sigla, req.body.cargaHoraria);
+            const savedDisciplina = await this.professorService.cadastrarDisciplina(disciplina);
+            res.status(201).send(savedDisciplina); 
+        }
+        catch(error){
+            if (error instanceof Error){
+                return res.status(404).send(error.message);
+            } else{
+                throw new Error(error);
+            }   
+        }
+    }
+
 
     cadastrarProjeto = async (req: Request, res: Response): Promise<Projeto> => {
         try {

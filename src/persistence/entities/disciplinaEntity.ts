@@ -10,11 +10,14 @@ export class DisciplinaEntity {
     @Column({ length: 100 })
     nome: string;
 
+    @Column({length: 10})
+    sigla: string;
+
     @Column()
     cargaHoraria: number
 
     asDisciplina(): Disciplina{
-        return new Disciplina(this.codigo, this.nome, this.cargaHoraria);
+        return new Disciplina(this.codigo, this.nome, this.sigla, this.cargaHoraria);
     }
 
 }
